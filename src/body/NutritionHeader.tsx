@@ -1,5 +1,4 @@
 import React from "react";
-import "./NutritionHeader.scss";
 import { IServingSize } from "../utils/ServingSize";
 
 export interface INutritionHeader {
@@ -13,7 +12,7 @@ export default class NutritionHeader extends React.Component<INutritionHeader, {
             servingSize
         } = this.props;
         return (
-            <div className="nutrition-header">
+            <div className="NutritionFacts__header">
                 <h1>
                     Nutrition Facts
                 </h1>

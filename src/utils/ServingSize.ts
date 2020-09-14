@@ -1,77 +1,67 @@
 export enum ImperialUnits {
-    Teaspoon,
-    Tablespoon,
-    Ounce,
-    Cup,
-    Custom,
+    Teaspoon = "tsp",
+    Tablespoon = "tbsp",
+    Ounce = "ounce",
+    Cup = "cup",
+    Custom = "",
 }
+
 
 export enum MetricUnits {
-    None,
-    Gram,
-    Milligram,
-    Microgram,
-    Kilogram,
-    Liter,
-    Milliliter,
-    IU
+    None = "",
+    Gram = "g",
+    Milligram = "mg",
+    Microgram = "mcg",
+    Kilogram = "kg",
+    Liter = "l",
+    Milliliter = "ml",
+
+    IU = "IU",
+    /**
+     * Microgram of retinol activity equivalents
+     */
+    MicrogramRAE = "mcg RAE",
+    /**
+     * Micrograms of dietary folate equivalents
+     */
+    MicrogramDFE = "mcg DFE",
+    /**
+     * milligrams of niacin equivalents
+     */
+    MilligramNE = "mg NE"
 }
 
-function parseUnitsMetric(unit: MetricUnits): string {
-    switch (unit) {
-        case MetricUnits.Gram:
-            return "g";
-        case MetricUnits.Kilogram:
-            return "kg";
-        case MetricUnits.Liter:
-            return "l";
-        case MetricUnits.Milliliter:
-            return "ml"
-        case MetricUnits.Milligram:
-            return "mg"
-        case MetricUnits.Microgram:
-            return "mcg"
-        case MetricUnits.IU:
-            return "IU"
-        default:
-            return ""
-    }
-}
-
-function parseUnitsImp(unit: ImperialUnits): string {
-    let size = "";
-    switch (unit) {
-        case ImperialUnits.Cup:
-            size = "cup";
-            break;
-        case ImperialUnits.Ounce:
-            size = "ounce";
-            break;
-        case ImperialUnits.Tablespoon:
-            size = "tbsp";
-            break;
-        case ImperialUnits.Teaspoon:
-            size = "tsp";
-            break;
-        case ImperialUnits.Custom:
-            size = ""
-            break;
-    }
-
-    return size;
-}
-
-interface IServiceSizeRequired{
+/**
+ * Set the serving size information
+ */
+export interface IServingSize{
+    /**
+     * Size of serving in cups, oz, tsp etc
+     */
     imperialUnits: ImperialUnits,
+    /**
+     * Fraction size string
+     * Example `"1/2 cup"`
+     */
     fractionalSize: string,
+    /**
+     * Amount of servings per container
+     */
     servingNumber: number,
-}
-
-export interface IServingSize extends IServiceSizeRequired{
+    /**
+     * Optional, Metric unit of serving size
+     * Example: g, mg, mcg
+     */
     metricUnit: MetricUnits | undefined,
+    /**
+     * Optional, Metric serving size
+     */
     metricSize: number | undefined,
+    /**
+     * Optional, custom serving units
+     * Example: `3 pretzels`
+     */
     customName: string | undefined,
-    toString(): string
 }
 
 export class ServingSize implements IServingSize {
@@ -79,7 +69,7 @@ export class ServingSize implements IServingSize {
     public fractionalSize!: string;
     public servingNumber!: number;
 
-    public metricUnit: MetricUnits = 0;
+    public metricUnit: MetricUnits = MetricUnits.None;
     public metricSize: number = 0;
     public customName: string = "";
 
@@ -94,26 +84,18 @@ export class ServingSize implements IServingSize {
         return parseInt(components[0]);
     }
 
-
-
-    constructor(item: IServiceSizeRequired & Partial<IServingSize>) {
+    constructor(item: Partial<IServingSize>) {
         Object.assign(this, item)
     }
-
-
 
     public get imperialUnitsRepr(): string {
         if (this.imperialUnits === ImperialUnits.Custom) {
             return this.customName;
         } else {
-            return parseUnitsImp(this.imperialUnits)
+            return this.imperialUnits
         }
     }
 
-
-    public get metricUnitsRepr(): string {
-        return parseUnitsMetric(this.metricUnit);
-    }
 
     public toString = (): string => {
         let servingstmt = `Serving Size ${this.fractionalSize} ${this.imperialUnitsRepr}`;
@@ -122,7 +104,7 @@ export class ServingSize implements IServingSize {
             return servingstmt;
         }
 
-        servingstmt += ` (about ${this.metricSize}${this.metricUnitsRepr})`;
+        servingstmt += ` (about ${this.metricSize}${this.metricUnit})`;
 
         return servingstmt;
     }

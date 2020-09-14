@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App';
+import NutritionFactTable from './NutritionFactTable';
 import * as serviceWorker from './serviceWorker';
+import { CholocateCookie, ChococlateChipCookie } from './utils/Examples';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NutritionFactTable {...{servingSizeInformation: CholocateCookie, nutritionItems: ChococlateChipCookie}}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
