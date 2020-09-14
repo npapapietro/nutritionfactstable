@@ -1,18 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import './index.scss';
-import NutritionFactTable from './NutritionFactTable';
-import * as serviceWorker from './serviceWorker';
-import { CholocateCookie, ChococlateChipCookie } from './utils/Examples';
+import NutritionHeader from './body/NutritionHeader';
+import NutritionMajor, { INutritionItems } from './body/NutritionBody';
+import NutritionFacts from './body/NutritionFacts';
+import { ENutritionItem, NutritionLookUp } from './utils/NutritionItemData';
+import { IServingSize, ImperialUnits, MetricUnits } from './utils/ServingSize';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <NutritionFactTable {...{servingSizeInformation: CholocateCookie, nutritionItems: ChococlateChipCookie}}/>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+export type ServingSize = IServingSize;
+export type NutrientItems = INutritionItems;
+
+export interface INutritionFactTableProps{
+    servingSizeInformation: ServingSize,
+    nutritionItems: NutrientItems
+}
+
+export default function NutritionFactTable(props: INutritionFactTableProps) {
+    return (
+        <section className="NutritionFacts">
+            <NutritionHeader servingSize={props.servingSizeInformation} />
+            <NutritionMajor {...props.nutritionItems} />
+            <NutritionFacts {...props.nutritionItems} />
+            <p className="small-info">
+                * Percent Daily Values are based on a 2,000 calorie diet. 
+                Your daily values may be higher or lower depending on your calorie needs:
+            </p>
+        </section>
+    );
+}
+
+export { ENutritionItem, ImperialUnits, MetricUnits, NutritionLookUp };    
