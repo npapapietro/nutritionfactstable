@@ -14,7 +14,7 @@ const ChococlateChipCookie = {
         { amount: 3, nutritionItem: ENutritionItem.Protein },
         { amount: 1, nutritionItem: ENutritionItem.VitaminA, fractionOverride: 0.1 },
         { amount: 1, nutritionItem: ENutritionItem.VitaminC, fractionOverride: 0  },
-        {amount: 0, nutritionItem: ENutritionItem.Calcium, fractionOverride: 0.06 }
+        { amount: 0, nutritionItem: ENutritionItem.Calcium, fractionOverride: 0.06 }
 
     ],
     calories: 200,
@@ -32,10 +32,9 @@ const props = {
     servingSizeInformation: ChococlateChipCookieServing,
     nutritionItems: ChococlateChipCookie
 }
-const component = () => (
-    <NutritionFactTable {...props}/>
-)
 
-ReactDOM.render(component, document.getElementById('root'))
 
+ReactDOM.render(<NutritionFactTable {...props}/>, document.getElementById('root'))
 ```
+
+![alt text](./public/rendered.png)
