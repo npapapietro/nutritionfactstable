@@ -6,7 +6,6 @@ import NutritionMajor, { INutritionItems } from './body/NutritionBody';
 import NutritionFacts from './body/NutritionFacts';
 import { ENutritionItem, NutritionLookUp } from './utils/NutritionItemData';
 import { IServingSize, ImperialUnits, MetricUnits } from './utils/ServingSize';
-import ReactDOM from 'react-dom';
 
 
 export type ServingSize = IServingSize;
