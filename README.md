@@ -1,7 +1,7 @@
 ## Example
 
 ```typescript
-const ChococlateChipCookie = {
+const ChocolateChipCookie = {
     items: [
         { amount: 14, nutritionItem: ENutritionItem.Fat },
         { amount: 9, nutritionItem: ENutritionItem.SaturatedFat },
@@ -22,15 +22,15 @@ const ChococlateChipCookie = {
 }
 
 
-const ChococlateChipCookieServing = {
+const ChocolateChipCookieServing = {
     imperialUnits: ImperialUnits.Ounce,
     fractionalSize: "1",
     servingNumber: 1
 } as IServingSize;
 
 const props = {
-    servingSizeInformation: ChococlateChipCookieServing,
-    nutritionItems: ChococlateChipCookie
+    servingSizeInformation: ChocolateChipCookieServing,
+    nutritionItems: ChocolateChipCookie
 }
 
 
