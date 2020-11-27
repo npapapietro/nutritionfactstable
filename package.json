@@ -1,6 +1,6 @@
 {
     "name": "nutritionfactstable",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": false,
     "description": "Simple FDA static react component for Nutrition Fact table",
     "maintainers": [
@@ -37,7 +37,7 @@
         "node-sass": "^4.14.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-scripts": "3.4.3",
+        "react-scripts": "^3.4.4",
         "typescript": "~3.7.2"
     },
     "scripts": {
