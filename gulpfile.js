@@ -23,7 +23,7 @@ gulp.task("sass:watch", function () {
 
 gulp.task("clean", function () {
   console.log("clean");
-  return gulp.src("dist", { read: false }).pipe(clean());
+  return gulp.src("dist", { read: false }).pipe(clean("./dist"));
 });
 
 gulp.task("compile", function () {

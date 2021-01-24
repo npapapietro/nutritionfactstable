@@ -4,9 +4,10 @@ import NutritionMajor, { INutritionItems } from './body/NutritionBody';
 import NutritionFacts from './body/NutritionFacts';
 import { IServingSize } from './utils/ServingSize';
 
-export type { ENutritionItem, NutritionLookUp } from './utils/NutritionItemData';
+export { ENutritionItem, NutritionLookUp } from './utils/NutritionItemData';
 export type {INutritionItems} from './body/NutritionBody';
-export type {IServingSize, ServingSize, ImperialUnits, MetricUnits} from "./utils/ServingSize";
+export {ImperialUnits, MetricUnits} from "./utils/ServingSize";
+export type {IServingSize, ServingSize, } from "./utils/ServingSize";
 export interface INutritionFactTableProps{
     servingSizeInformation: IServingSize,
     nutritionItems: INutritionItems
