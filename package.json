@@ -2,6 +2,8 @@
     "name": "nutritionfactstable",
     "version": "1.1.1",
     "private": false,
+    "main": "src/index.js",
+    "types": "src/index.d.ts",
     "description": "Simple FDA static react component for Nutrition Fact table",
     "maintainers": [
         {
@@ -34,17 +36,18 @@
         "@types/node": "^14.14.22",
         "@types/react": "^17.0.0",
         "@types/react-dom": "^17.0.0",
-        "node-sass": "^5.0.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-scripts": "^4.0.1",
-        "typescript": "~4.1.3"
+        "sass": "^1.32.5",
+        "typescript": "^4.1.3"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "prepublish": "tsc"
     },
     "eslintConfig": {
         "extends": "react-app"
