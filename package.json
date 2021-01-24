@@ -51,7 +51,7 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "prepublish": "tsc"
+        "prepare": "gulp"
     },
     "eslintConfig": {
         "extends": "react-app"
