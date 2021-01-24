@@ -1,9 +1,9 @@
 {
     "name": "nutritionfactstable",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "private": false,
-    "main": "src/index.js",
-    "types": "src/index.d.ts",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "description": "Simple FDA static react component for Nutrition Fact table",
     "maintainers": [
         {
