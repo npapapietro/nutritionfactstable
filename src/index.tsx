@@ -1,4 +1,4 @@
-import './index.css';
+import './main.css';
 import NutritionHeader from './body/NutritionHeader';
 import NutritionMajor, { INutritionItems } from './body/NutritionBody';
 import NutritionFacts from './body/NutritionFacts';
