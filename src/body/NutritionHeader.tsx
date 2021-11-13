@@ -1,24 +1,36 @@
-import React from "react";
 import { IServingSize, ServingSize } from "../utils/ServingSize";
+import styled from "styled-components";
 
-export interface INutritionHeader {
-    servingSize: IServingSize,
+interface INutritionHeader {
+  servingSize: IServingSize;
 }
 
-export default class NutritionHeader extends React.Component<INutritionHeader, {}> {
-    render() {
-        const {
-            servingSize
-        } = this.props;
-        const servingSizeInstance = new ServingSize(servingSize);
-        return (
-            <div className="NutritionFacts__header">
-                <h1>
-                    Nutrition Facts
-                </h1>
-                <p>{servingSizeInstance.toString()}</p>
-                <p>{`Serving Per Container ${servingSizeInstance.servingNumber}`}</p>
-            </div>
-        );
-    }
-}
+const NHeader = styled.h1`
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0 0 0.25rem 0;
+`;
+
+const NP = styled.p`
+  margin: 0;
+`;
+
+const NHeaderDiv = styled.div`
+  border-bottom: 10px solid black;
+  padding: 0 0 0.25rem 0;
+  margin: 0 0 0.5rem 0;
+`;
+
+const NutritionHeader = (props: INutritionHeader) => {
+  const { servingSize } = props;
+  const servingSizeInstance = new ServingSize(servingSize);
+  return (
+    <NHeaderDiv>
+      <NHeader>Nutrition Facts</NHeader>
+      <NP>{servingSizeInstance.toString()}</NP>
+      <NP>{`Serving Per Container ${servingSizeInstance.servingNumber}`}</NP>
+    </NHeaderDiv>
+  );
+};
+
+export default NutritionHeader;
